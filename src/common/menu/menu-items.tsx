@@ -7,10 +7,11 @@ import ChatIcon from '@material-ui/icons/Chat'
 import GroupIcon from '@material-ui/icons/Group'
 import VpnKeyIcon from '@material-ui/icons/VpnKey'
 import BuildIcon from '@material-ui/icons/Build'
+import { Link } from 'react-router-dom'
 
 export const mainMenuItems = (
   <div>
-    <ListItem button>
+    <ListItem button >
       <ListItemIcon>
         <GroupIcon/>
       </ListItemIcon>
@@ -22,23 +23,31 @@ export const mainMenuItems = (
       </ListItemIcon>
       <ListItemText primary="Private Chat" />
     </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Users" />
-    </ListItem>
+
+    <Link to="users">
+      <ListItem button>
+        <ListItemIcon>
+          <PeopleIcon />
+        </ListItemIcon>
+        <ListItemText primary="Users" />
+      </ListItem>
+    </Link>
+    
     <ListItem button>
       <ListItemIcon>
         <ChatIcon />
       </ListItemIcon>
       <ListItemText primary="Chats" />
     </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <BuildIcon />
-      </ListItemIcon>
-      <ListItemText primary="Change Nick" />
-    </ListItem>
+
+    <Link to="user-change">
+      <ListItem button>
+        <ListItemIcon>
+          <BuildIcon />
+        </ListItemIcon>
+        <ListItemText primary="Change Nick" />
+      </ListItem>
+    </Link>
+
   </div>
 )
