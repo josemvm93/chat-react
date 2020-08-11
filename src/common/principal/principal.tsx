@@ -189,7 +189,7 @@ function Principal() {
                       <Route path="/mis-chats" element={<Chat />} />
                       <Route path="/user-change" element={<UserChange user={currentUser} updateUserProp={updateUser}/>} />
                       <Route path="/search-users-groups" element={<Chat />} />
-                      <Route path="/create-group-chat" element={<ChatCreateGroup />} />
+                      <Route path="/create-group-chat" element={<ChatCreateGroup user={currentUser} />} />
                     </Routes>
                 </Paper>
                 </Grid>

@@ -4,8 +4,13 @@ import Alert, { Color } from '@material-ui/lab/Alert'
 import { Category } from '../../../common/models/category'
 import { categoryCollection } from '../../../services/category'
 import { createGroupChat } from '../../../services/chat'
+import { User } from '../../../common/models/user'
 
-function ChatCreateGroup() {
+interface ChatCreateGroupProps {
+    user?: User
+}
+
+function ChatCreateGroup({user}: ChatCreateGroupProps) {
     const [alertOpen, setAlertOpen] = useState(false)
     const [alertSeverity, setAlertSeverity] = useState<Color>()
     const [alertMessage, setAlertMessage] = useState('')
@@ -37,7 +42,7 @@ function ChatCreateGroup() {
     }
 
     const saveGroupChat = () => {
-        createGroupChat(groupChatName, categoryId).then( doc => {
+        user && createGroupChat(groupChatName, categoryId, user.id).then( doc => {
             setAlertOpen(true)
             setAlertSeverity('success')
             setAlertMessage('Group Chat Created')

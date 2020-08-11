@@ -3,9 +3,9 @@ import { Chat, ChatType } from "../common/models/chat";
 
 export const chatCollection = FirebaseApp.firestore().collection('chats')
 
-export function createGroupChat(name: string, categoryId: string) {
+export function createGroupChat(name: string, categoryId: string, userId: string) {
     const chat = {
-        userIds: [],
+        userIds: [userId],
         messageIds: [],
         name: name,
         type: ChatType.Group,
