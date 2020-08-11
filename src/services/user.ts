@@ -7,13 +7,8 @@ function getRandomUserName(min: number = 1, max: number = 100) {
 
 export const userCollection = FirebaseApp.firestore().collection('users')
 
-export function changeUser() {
-}
-
 export function getUserById(userId: string) {
     return userCollection.doc(userId)
-    // .doc(client.id)
-    //   .set(client, { merge: true });
 }
 
 export function addUser() {

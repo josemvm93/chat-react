@@ -20,6 +20,8 @@ import { mainMenuItems } from '../menu/menu-items'
 import { UserList } from '../../components/users/users-list/user-list'
 import { UserChange } from '../../components/users/user-change/user-change'
 import { getUserById } from '../../services/user'
+import Chat from '../../components/chats/chat/chat'
+import ChatCreateGroup from '../../components/chats/chat-create-group/chat-create-group'
 
 const drawerWidth = 240;
 
@@ -181,8 +183,13 @@ function Principal() {
                 <Grid item xs={12} md={12} lg={12}>
                 <Paper className={fixedHeightPaper}>
                     <Routes>
-                        <Route path="/users" element={<UserList />} />
-                        <Route path="/user-change" element={<UserChange user={currentUser} updateUserProp={updateUser}/>} />
+                      <Route path="/group-chat" element={<Chat />} />
+                      <Route path="/private-chat" element={<Chat />} />
+                      <Route path="/users" element={<UserList />} />
+                      <Route path="/mis-chats" element={<Chat />} />
+                      <Route path="/user-change" element={<UserChange user={currentUser} updateUserProp={updateUser}/>} />
+                      <Route path="/search-users-groups" element={<Chat />} />
+                      <Route path="/create-group-chat" element={<ChatCreateGroup />} />
                     </Routes>
                 </Paper>
                 </Grid>

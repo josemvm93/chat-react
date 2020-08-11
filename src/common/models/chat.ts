@@ -1,5 +1,3 @@
-import { User } from "firebase";
-import { Message } from "./message";
 import { BasicModel } from "./basic-model";
 
 export enum ChatType {
@@ -10,6 +8,8 @@ export enum ChatType {
 export interface Chat extends BasicModel{
     type: ChatType
     name: string
-    users: User[]
-    messages: Message[]
+    categoryId: string
+    userIds: String[]
+    messageIds: String[]
+
 }
