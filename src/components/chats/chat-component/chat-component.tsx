@@ -2,7 +2,7 @@ import React from 'react'
 import ChatContainer from './chat-container/chat-container'
 import ChatList, { ChatFilter } from './chat-list/chat-list'
 import { Grid, Paper, makeStyles } from '@material-ui/core'
-import { ChatType, Chat } from '../../../common/models/chat';
+import { ChatType } from '../../../common/models/chat';
 import { User } from '../../../common/models/user';
 import { ChatContextProvider } from '../../../common/contexts/chat-context';
 

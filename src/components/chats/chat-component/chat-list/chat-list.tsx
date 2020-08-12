@@ -64,7 +64,7 @@ function ChatList({chatType, user, chatFilter, searchEnabled}: ChatListProps) {
         switch (chatFilter) {
             case ChatFilter.byChatType:
                 queryChat = chatCollection.where("type", "==", chatType)
-                if (chatType == ChatType.Private) {
+                if (chatType === ChatType.Private) {
                     queryChat = user && queryChat.where("userIds", "array-contains", user.id)
                     queryChat && queryChat.onSnapshot( snap => {
                         setLoading(true)
@@ -76,7 +76,8 @@ function ChatList({chatType, user, chatFilter, searchEnabled}: ChatListProps) {
                                 let userChatIncluded = false
                                 snapUser.docs.forEach(docUser => {
                                     const user = docUser.data() as User
-                                    userChatIncluded = userChatIncluded || chat.userIds.includes(docUser.id) && user.name.toLowerCase().includes(searchText.toLowerCase())                            
+                                    userChatIncluded = userChatIncluded || 
+                                        (chat.userIds.includes(docUser.id) && user.name.toLowerCase().includes(searchText.toLowerCase()))                          
                                 })
                                 searchEnabled ? userChatIncluded && chatsTmp.push(chat) : chatsTmp.push(chat)
                             })

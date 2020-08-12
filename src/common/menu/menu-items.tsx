@@ -8,7 +8,6 @@ import GroupIcon from '@material-ui/icons/Group'
 import VpnKeyIcon from '@material-ui/icons/VpnKey'
 import BuildIcon from '@material-ui/icons/Build'
 import { Link } from 'react-router-dom'
-import SearchIcon from '@material-ui/icons/Search'
 import AddIcon from '@material-ui/icons/Add'
 
 export const mainMenuItems = (
