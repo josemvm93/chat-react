@@ -75,8 +75,8 @@ function ChatCreateGroup({user}: ChatCreateGroupProps) {
                     onChange={e => onChangeCategory(e.target.value)}
                     helperText="Please select the category"
                     >
-                    {categories.map((category) => (
-                        <MenuItem key={category.id} value={category.id}>
+                    {categories.map((category, index) => (
+                        <MenuItem key={index} value={category.id}>
                             {category.name}
                         </MenuItem>
                     ))}

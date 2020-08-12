@@ -40,7 +40,7 @@ export const mainMenuItems = (
       </ListItem>
     </Link>
     
-    <Link to="mis-chats">
+    <Link to="my-chats">
       <ListItem button>
         <ListItemIcon>
           <ChatIcon />

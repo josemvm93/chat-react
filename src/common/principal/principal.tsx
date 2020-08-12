@@ -22,6 +22,8 @@ import { UserChange } from '../../components/users/user-change/user-change'
 import { getUserById } from '../../services/user'
 import Chat from '../../components/chats/chat/chat'
 import ChatCreateGroup from '../../components/chats/chat-create-group/chat-create-group'
+import { ChatType } from '../models/chat'
+import { ChatFilter } from '../../components/chats/chat/chat-list/chat-list'
 
 const drawerWidth = 240;
 
@@ -121,13 +123,11 @@ function Principal() {
 
   const navigate = useNavigate()
   useEffect(() => {
-      console.log('user ini ', currentUser)
     if (userId) {
         getUserById(userId).get().then(doc => {
             const user: User = doc.data() as User
             user.id = doc.id
             setCurrentUser(user)
-            console.log('muchas veces')
         }).catch(e => {
             navigate('/')
         })
@@ -183,12 +183,12 @@ function Principal() {
                 <Grid item xs={12} md={12} lg={12}>
                 <Paper className={fixedHeightPaper}>
                     <Routes>
-                      <Route path="/group-chat" element={<Chat />} />
-                      <Route path="/private-chat" element={<Chat />} />
-                      <Route path="/users" element={<UserList />} />
-                      <Route path="/mis-chats" element={<Chat />} />
+                      <Route path="/group-chat" element={<Chat chatType={ChatType.Group} user={currentUser} chatFilter={ChatFilter.byChatType} />} />
+                      <Route path="/private-chat" element={<Chat chatType={ChatType.Private} user={currentUser} chatFilter={ChatFilter.byChatType}/>} />
+                      <Route path="/users" element={<UserList userOrigin={currentUser}/>} />
+                      <Route path="/my-chats" element={<Chat chatType={ChatType.Group} user={currentUser} chatFilter={ChatFilter.byMyOwnChat}/>} />
                       <Route path="/user-change" element={<UserChange user={currentUser} updateUserProp={updateUser}/>} />
-                      <Route path="/search-users-groups" element={<Chat />} />
+                      <Route path="/search-users-groups" element={<Chat chatType={ChatType.Group} user={currentUser} chatFilter={ChatFilter.byUserAndGroup}/>} />
                       <Route path="/create-group-chat" element={<ChatCreateGroup user={currentUser} />} />
                     </Routes>
                 </Paper>

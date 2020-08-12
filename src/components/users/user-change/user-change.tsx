@@ -13,7 +13,7 @@ interface UserChangeProps {
 
 export const UserChange: FunctionComponent<UserChangeProps> = ({user, updateUserProp}) => {
     const [name, setName] = useState<string>('')
-    const [openAlert, setOpenAlert] = useState<boolean>(false)
+    const [alterOpen, setAlertOpen] = useState<boolean>(false)
     const [alertMessage, setAlertMessage] = useState<string>('')
     const [alertSeverity, setAlertSeverity] = useState<Color>()
 
@@ -23,11 +23,11 @@ export const UserChange: FunctionComponent<UserChangeProps> = ({user, updateUser
             user.name = name
             updateUser(user).then(() => {
                 updateUserProp(user)
-                setOpenAlert(true)
+                setAlertOpen(true)
                 setAlertMessage('Name changed')
                 setAlertSeverity('success')
                 setTimeout(() => {
-                    setOpenAlert(false)
+                    setAlertOpen(false)
                 }, 1800)
             })
         }
@@ -54,7 +54,7 @@ export const UserChange: FunctionComponent<UserChangeProps> = ({user, updateUser
                         <Button variant="contained" color="primary" onClick={saveUser}>
                             Save
                         </Button>
-                        {openAlert && <Alert severity={alertSeverity}>{alertMessage}</Alert>}
+                        {alterOpen && <Alert severity={alertSeverity}>{alertMessage}</Alert>}
                     </Grid>
                     
                 </div>
