@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -8,6 +8,7 @@ import { chatCollection } from '../../../../services/chat';
 import { CircularProgress } from '@material-ui/core';
 import { User } from '../../../../common/models/user';
 import ChatListItem from './chat-list-item/chat-list-item';
+import ChatContext from '../../../../common/contexts/chat-context';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -38,7 +39,10 @@ function ChatList({chatType, user, chatFilter}: ChatListProps) {
 
     const [loading, setLoading] = useState(false)
 
+    const {setChatSelected} = useContext(ChatContext)
+
     function getChats() {
+        setChatSelected()
         let queryChat
         switch (chatFilter) {
             case ChatFilter.byChatType:

@@ -24,3 +24,7 @@ export function createPrivateChat(userId1: string, userId2: string) {
     }
     return chatCollection.add(chat)
 }
+
+export function addMessageToChat(chatId: string, messageId: string, messageIds: string []) {
+    return chatCollection.doc(chatId).set({messageIds: [...messageIds, messageId]}, {merge: true})
+}

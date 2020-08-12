@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { ListItem, ListItemAvatar, Avatar, ListItemText } from '@material-ui/core'
 import ImageIcon from '@material-ui/icons/Image';
 import { Chat, ChatType } from '../../../../../common/models/chat';
@@ -6,6 +6,7 @@ import { Category } from '../../../../../common/models/category';
 import { getCategoryById } from '../../../../../services/category';
 import { User } from '../../../../../common/models/user';
 import { getUserById } from '../../../../../services/user';
+import ChatContext from '../../../../../common/contexts/chat-context';
 
 interface ChatListItemProps {
     chat: Chat,
@@ -17,7 +18,11 @@ function ChatListItem({chat, userOrigin}: ChatListItemProps) {
     const [category, setCategory] = useState<Category>()
     const [user, setUser] = useState<User>()
 
+    const {setChatSelected} = useContext(ChatContext)
 
+    const onSelectChat = () => {
+        setChatSelected(chat)
+    }
     const getCategoryByIdFn = (id: string) => {
         getCategoryById(id).get().then(doc => {
             const category: Category = doc.data() as Category
@@ -52,7 +57,7 @@ function ChatListItem({chat, userOrigin}: ChatListItemProps) {
     }
 
     return (
-        <ListItem button key={chat.id}>
+        <ListItem button key={chat.id} onClick={onSelectChat}>
             <ListItemAvatar>
                 <Avatar>
                     <ImageIcon />
