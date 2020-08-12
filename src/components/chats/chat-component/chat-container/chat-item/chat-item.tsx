@@ -54,7 +54,7 @@ function ChatItem({message, userOrigin}: ChatItemProps) {
     }
 
     useEffect(() => {
-        setSameUser(userOrigin?.id == message.sendBy)
+        setSameUser(userOrigin?.id === message.sendBy)
         getUserByIdFn()
     }, [userOrigin, message])
 

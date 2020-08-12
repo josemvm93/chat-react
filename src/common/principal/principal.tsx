@@ -183,12 +183,11 @@ function Principal() {
                 <Grid item xs={12} md={12} lg={12}>
                 <Paper className={fixedHeightPaper}>
                     <Routes>
-                      <Route path="/group-chat" element={<ChatComponent chatType={ChatType.Group} user={currentUser} chatFilter={ChatFilter.byChatType} />} />
-                      <Route path="/private-chat" element={<ChatComponent chatType={ChatType.Private} user={currentUser} chatFilter={ChatFilter.byChatType}/>} />
+                      <Route path="/group-chat" element={<ChatComponent chatType={ChatType.Group} user={currentUser} chatFilter={ChatFilter.byChatType} searchEnabled={true}/>} />
+                      <Route path="/private-chat" element={<ChatComponent chatType={ChatType.Private} user={currentUser} chatFilter={ChatFilter.byChatType} searchEnabled={true}/>} />
                       <Route path="/users" element={<UserList userOrigin={currentUser}/>} />
                       <Route path="/my-chats" element={<ChatComponent chatType={ChatType.Group} user={currentUser} chatFilter={ChatFilter.byMyOwnChat}/>} />
                       <Route path="/user-change" element={<UserChange user={currentUser} updateUserProp={updateUser}/>} />
-                      <Route path="/search-users-groups" element={<ChatComponent chatType={ChatType.Group} user={currentUser} chatFilter={ChatFilter.byUserAndGroup}/>} />
                       <Route path="/create-group-chat" element={<ChatCreateGroup user={currentUser} />} />
                     </Routes>
                 </Paper>

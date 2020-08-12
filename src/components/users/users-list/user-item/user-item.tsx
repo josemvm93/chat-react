@@ -29,7 +29,7 @@ export const UserItem: FunctionComponent<UserItemProps> = ({user, userOrigin}) =
     }
     return (
         <div>
-            {userOrigin && userOrigin.id != user.id &&
+            {userOrigin && userOrigin.id !== user.id &&
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>

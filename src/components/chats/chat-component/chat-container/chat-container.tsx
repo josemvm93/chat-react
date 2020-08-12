@@ -67,7 +67,7 @@ function ChatContainer({user}: ChatContainerProps) {
     const getMessagesFn = (ids: string[]) => {
         messageCollection.onSnapshot(snap => {
             const messagesTmp: Message[] = []
-            snap.docs.map(doc => {
+            snap.docs.forEach(doc => {
                 if (ids.includes(doc.id)) {
                     const message = doc.data() as Message
                     message.id = doc.id

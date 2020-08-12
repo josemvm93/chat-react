@@ -32,7 +32,7 @@ function ChatListItem({chat, userOrigin}: ChatListItemProps) {
     }
 
     const getUserByIdFn = () => {
-        const userIds: string[] = (userOrigin ? chat.userIds.filter(userId => userId != userOrigin.id) : []) as string[]
+        const userIds: string[] = (userOrigin ? chat.userIds.filter(userId => userId !== userOrigin.id) : []) as string[]
 
         userIds[0] && getUserById(userIds[0]).get().then(doc => {
             const user: User = doc.data() as User
@@ -42,7 +42,7 @@ function ChatListItem({chat, userOrigin}: ChatListItemProps) {
     }
 
     useEffect(() => {
-        if (chat.type == ChatType.Private) {
+        if (chat.type === ChatType.Private) {
             getUserByIdFn()
         } else {
             getCategoryByIdFn(chat.categoryId)
@@ -50,7 +50,7 @@ function ChatListItem({chat, userOrigin}: ChatListItemProps) {
     }, [])
 
     const drawChatType = () => {
-        if (chat.type == ChatType.Private) {
+        if (chat.type === ChatType.Private) {
             return <ListItemText primary={user?.name}/>
         }
         return <ListItemText primary={chat.name} secondary={category?.name} />
