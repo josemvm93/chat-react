@@ -45,7 +45,7 @@ export const mainMenuItems = (
         <ListItemIcon>
           <ChatIcon />
         </ListItemIcon>
-        <ListItemText primary="Chats" />
+        <ListItemText primary="My Chats" />
       </ListItem>
     </Link>
 
@@ -55,15 +55,6 @@ export const mainMenuItems = (
           <BuildIcon />
         </ListItemIcon>
         <ListItemText primary="Change Nick" />
-      </ListItem>
-    </Link>
-
-    <Link to="search-users-groups">
-      <ListItem button>
-        <ListItemIcon>
-          <SearchIcon />
-        </ListItemIcon>
-        <ListItemText primary="Search User/Group" />
       </ListItem>
     </Link>
 
